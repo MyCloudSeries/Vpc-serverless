@@ -1,9 +1,13 @@
 resource "aws_s3_bucket" "project_bucket" {
-  bucket = "mybucket"
+  bucket = var.bucket_name
 }
 
-resource "aws_s3_bucket_cors_configuration" "project_bucket_cors" {
-  bucket = var.bucket_url
+resource "aws_s3_bucket_acl" "project_bucket_acl" {
+  bucket = aws_s3_bucket.project_bucket.id
+  acl    = "public-read"
+}
+resource "aws_s3_bucket_cors_configuration" "project_bucket" {
+  bucket = aws_s3_bucket.project_bucket.bucket
 
   cors_rule {
     allowed_headers = ["*"]
@@ -15,6 +19,7 @@ resource "aws_s3_bucket_cors_configuration" "project_bucket_cors" {
 
   cors_rule {
     allowed_methods = ["GET"]
-    allowed_origins = ["*"]
+    allowed_origins = [var.coldsis_website]
   }
 }
+
