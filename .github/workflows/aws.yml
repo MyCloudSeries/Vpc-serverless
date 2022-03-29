@@ -1,0 +1,7 @@
+- name: Serverless GithubAction
+  # You may pin to the exact commit or the version.
+  # uses: SuprGames/serverless-github-action@be200a36b5a0aac387e6102189add19380ff20fa
+  uses: SuprGames/serverless-github-action@v1.77
+  with:
+    # Serverless command including arguments
+    command: 
