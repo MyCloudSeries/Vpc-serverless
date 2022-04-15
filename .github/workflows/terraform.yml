@@ -70,8 +70,8 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        aws-access-key-id: AKIARWXHMAETTTO226G5
-        aws-secret-access-key: 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
+        aws-access-key-id: "AKIARWXHMAETTTO226G5"
+        aws-secret-access-key: "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"
         aws-region: eu-west-1
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
