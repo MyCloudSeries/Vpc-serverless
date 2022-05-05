@@ -12,14 +12,14 @@ resource "aws_s3_bucket_cors_configuration" "project_bucket" {
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST"]
-    allowed_origins = [var.coldsis_website]
+    allowed_origins = [var.bucket_name]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
   }
 
   cors_rule {
     allowed_methods = ["GET"]
-    allowed_origins = [var.coldsis_website]
+    allowed_origins = [var.bucket_name]
   }
 }
 
@@ -44,7 +44,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = format("%s.s3.amazonaws.com", var.coldsis_website)
+    bucket          = format("%s.s3.amazonaws.com", var.bucket_name)
     prefix          = "coldsis/"
   }
 
